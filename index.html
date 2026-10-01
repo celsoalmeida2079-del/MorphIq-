@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="notranslate" meta name="google" content="notranslate">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>MorphIQ | Experimental Computational Representation</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js para o Gráfico de Benchmark -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body { background-color: #0b0f19; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; }
         .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -24,7 +27,7 @@
                 <a href="#about" class="hover:text-sky-400 transition" data-en="About" data-pt="Sobre">About</a>
                 <a href="#lab" class="hover:text-sky-400 transition" data-en="Interactive Lab" data-pt="Laboratório">Interactive Lab</a>
                 <a href="#architecture" class="hover:text-sky-400 transition" data-en="Architecture" data-pt="Arquitetura">Architecture</a>
-                <a href="#research" class="hover:text-sky-400 transition" data-en="Research" data-pt="Pesquisa">Research</a>
+                <a href="#benchmark" class="hover:text-sky-400 transition" data-en="Telemetry Chart" data-pt="Gráfico de Telemetria">Telemetry Chart</a>
                 <a href="#nvidia" class="hover:text-sky-400 transition">NVIDIA Ecosystem</a>
                 <a href="#contact" class="hover:text-sky-400 transition" data-en="Contact" data-pt="Contacto">Contact</a>
             </nav>
@@ -95,7 +98,7 @@
             </div>
         </div>
 
-        <!-- 4-STAGE DETAILED FLOWCHART CARDS (SAFE FOR PATENT) -->
+        <!-- 4-STAGE CARDS -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
             <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col justify-between">
                 <div>
@@ -111,7 +114,7 @@
                 <div>
                     <span class="text-indigo-400 font-mono text-xs block mb-1">02. SECURITY</span>
                     <h3 class="text-sm font-bold text-slate-200 mb-2" data-en="Polymorphic Shield" data-pt="Escudo Polimórfico">Polymorphic Shield</h3>
-                    <p class="text-slate-400 leading-relaxed" data-en="Combines baseline signals with stochastically generated noise vectors to obfuscate transit logic." data-pt="Combina sinais de base com vetores de ruído estocásticos para ofuscar a lógica em trânsito.">
+                    <p class="text-slate-400 leading-relaxed" data-en="Combines baseline signals with stochastically generated noise vectors to obfuscate transit logic." data-pt="Combina sinais de referência com vetores de ruído gerados estocasticamente para ofuscar a lógica.">
                         Combines baseline signals with stochastically generated noise vectors to obfuscate transit logic.
                     </p>
                 </div>
@@ -121,7 +124,7 @@
                 <div>
                     <span class="text-amber-400 font-mono text-xs block mb-1">03. TRANSPORT</span>
                     <h3 class="text-sm font-bold text-slate-200 mb-2" data-en="Confidential Traffic" data-pt="Tráfego Confidencial">Confidential Traffic</h3>
-                    <p class="text-slate-400 leading-relaxed" data-en="Renders network and RAM payloads entirely indecipherable as static noise without hardware keys." data-pt="Torna o tráfego de rede e RAM indecifrável como ruído estático sem chaves de hardware.">
+                    <p class="text-slate-400 leading-relaxed" data-en="Renders network and RAM payloads entirely indecipherable as static noise without hardware keys." data-pt="Torna os dados de rede e RAM completamente indecifráveis sem chaves de hardware.">
                         Renders network and RAM payloads entirely indecipherable as static noise without hardware keys.
                     </p>
                 </div>
@@ -131,9 +134,33 @@
                 <div>
                     <span class="text-emerald-400 font-mono text-xs block mb-1">04. HARDWARE</span>
                     <h3 class="text-sm font-bold text-slate-200 mb-2" data-en="Silicon PUF Binding" data-pt="Validação em Silício (PUF)">Silicon PUF Binding</h3>
-                    <p class="text-slate-400 leading-relaxed" data-en="Target hardware physical unclonable functions validate physical resonance and execute primitives." data-pt="Funções físicas inestimáveis (PUF) no silício validam a ressonância física e executam.">
+                    <p class="text-slate-400 leading-relaxed" data-en="Target hardware physical unclonable functions validate physical resonance and execute primitives." data-pt="Funções fisicamente não clonáveis do hardware alvo validam a ressonância física e executam.">
                         Target hardware physical unclonable functions validate physical resonance and execute primitives.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: BENCHMARK / TELEMETRY CHART -->
+    <section id="benchmark" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
+        <h2 class="text-2xl font-bold mb-2 gradient-text" data-en="Signal Obfuscation & Telemetry Analysis" data-pt="Análise de Telemetria e Ofuscação de Sinal">Signal Obfuscation & Telemetry Analysis</h2>
+        <p class="text-sm text-slate-400 mb-6" data-en="Simulated comparative telemetry: Pure Signal vs. Polymorphic Camouflaged Wave in transit." data-pt="Telemetria comparativa simulada: Sinal Puro vs. Onda Polimórfica Camuflada em trânsito.">
+            Simulated comparative telemetry: Pure Signal vs. Polymorphic Camouflaged Wave in transit.
+        </p>
+
+        <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+            <div class="h-64 relative">
+                <canvas id="benchmarkChart"></canvas>
+            </div>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono text-slate-400 border-t border-slate-800/80 pt-4">
+                <div>
+                    <span class="text-sky-400 font-bold block mb-1">BLUE LINE (Pure Waveform):</span>
+                    <p>Logical instruction mapping (ADD, SUB, JMP) generated from initial geometric intent.</p>
+                </div>
+                <div>
+                    <span class="text-indigo-400 font-bold block mb-1">PURPLE LINE (Camouflaged Noise):</span>
+                    <p>Polymorphic 3D chaotic noise overlay protecting transit across untrusted RAM / Cloud nodes.</p>
                 </div>
             </div>
         </div>
@@ -142,15 +169,15 @@
     <!-- WHAT IS MORPHIQ & PATENT -->
     <section id="about" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
         <h2 class="text-2xl font-bold mb-4 gradient-text" data-en="What is MorphIQ?" data-pt="O que é o MorphIQ?">What is MorphIQ?</h2>
-        <p class="text-slate-300 leading-relaxed mb-6" data-en="MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent onto mathematical waveforms and hardware-bound primitives." data-pt="O MorphIQ é uma exploração científica em andamento sobre a representação geométrica e baseada em ondas de primitivas computacionais. Em vez de alegar substituir os paradigmas convencionais de von Neumann, a nossa pesquisa explora representações paralelas que mapeiam a intenção computacional em formas de onda matemáticas e primitivas vinculadas ao hardware.">
+        <p class="text-slate-300 leading-relaxed mb-6" data-en="MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent onto mathematical waveforms and hardware-bound primitives." data-pt="O MorphIQ é uma exploração científica em andamento sobre a representação geométrica e baseada em ondas de primitivas computacionais. Em vez de pretender substituir os paradigmas padrão de von Neumann ou imperativos, nossa pesquisa explora representações paralelas que mapeiam a intenção computacional em formas de onda matemáticas e primitivas limitadas por hardware.">
             MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent onto mathematical waveforms and hardware-bound primitives.
         </p>
 
         <!-- INTELLECTUAL PROPERTY / INPI CARD -->
         <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
-            <h3 class="text-lg font-bold text-slate-200 mb-2" data-en="Intellectual Property Status" data-pt="Status de Propriedade Intelectual">Intellectual Property Status</h3>
-            <p class="text-sm font-mono text-sky-400 mb-2" data-en="Patent pending — Brasil / INPI — BR 10 2026 0229903" data-pt="Patente pendente — Brasil / INPI — BR 10 2026 0229903">Patent pending — Brasil / INPI — BR 10 2026 0229903</p>
-            <p class="text-xs text-slate-500" data-en="Publicly disclosed material on this domain is intentionally non-confidential and serves purely educational and informational research purposes." data-pt="O material divulgado publicamente neste domínio é intencionalmente não confidencial e serve puramente para fins educacionais e de pesquisa informativa.">Publicly disclosed material on this domain is intentionally non-confidential and serves purely educational and informational research purposes.</p>
+            <h3 class="text-lg font-bold text-slate-200 mb-2" data-en="Intellectual Property Status" data-pt="Status da Propriedade Intelectual">Intellectual Property Status</h3>
+            <p class="text-sm font-mono text-sky-400 mb-2" data-en="Patent pending — Brasil / INPI — BR 10 2026 0229903" data-pt="Patente pendente — Brasil/INPI — BR 10 2026 0229903">Patent pending — Brasil / INPI — BR 10 2026 0229903</p>
+            <p class="text-xs text-slate-500" data-en="Publicly disclosed material on this domain is intentionally non-confidential and serves purely educational and informational research purposes." data-pt="O material divulgado publicamente neste domínio não é confidencial por natureza e serve apenas para fins educacionais e de pesquisa informativa.">Publicly disclosed material on this domain is intentionally non-confidential and serves purely educational and informational research purposes.</p>
         </div>
     </section>
 
@@ -158,12 +185,12 @@
     <section id="nvidia" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
         <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-                <h3 class="text-xl font-bold text-slate-100 mb-2" data-en="Accelerated Compute & Ecosystem Alignment" data-pt="Computação Acelerada e Alinhamento de Ecossistema">Accelerated Compute & Ecosystem Alignment</h3>
-                <p class="text-slate-400 text-sm max-w-2xl" data-en="Our architectural roadmap targets potential integration into the NVIDIA ecosystem through future GPU/CUDA research and accelerated compute research. The implementation leverages parallel matrix operations suitable for high-throughput hardware architectures." data-pt="O nosso roteiro arquitetónico visa a potencial integração no ecossistema NVIDIA através de pesquisas futuras em GPU/CUDA e computação acelerada. A implementação aproveita operações de matrizes paralelas adequadas para arquiteturas de hardware de alto desempenho.">
+                <h3 class="text-xl font-bold text-slate-100 mb-2" data-en="Accelerated Compute & Ecosystem Alignment" data-pt="Computação acelerada e alinhamento do ecossistema">Accelerated Compute & Ecosystem Alignment</h3>
+                <p class="text-slate-400 text-sm max-w-2xl" data-en="Our architectural roadmap targets potential integration into the NVIDIA ecosystem through future GPU/CUDA research and accelerated compute research. The implementation leverages parallel matrix operations suitable for high-throughput hardware architectures." data-pt="Nosso roteiro arquitetônico visa a potencial integração ao ecossistema NVIDIA por meio de futuras pesquisas em GPU/CUDA e computação acelerada. A implementação aproveita operações matriciais paralelas adequadas para arquiteturas de hardware de alto desempenho.">
                     Our architectural roadmap targets potential integration into the NVIDIA ecosystem through future GPU/CUDA research and accelerated compute research. The implementation leverages parallel matrix operations suitable for high-throughput hardware architectures.
                 </p>
             </div>
-            <span class="px-4 py-2 bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 rounded-lg text-xs font-mono whitespace-nowrap">CUDA ALIGNED</span>
+            <span class="px-4 py-2 bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 rounded-lg text-xs font-mono whitespace-nowrap">ALINHADO COM CUDA</span>
         </div>
     </section>
 
@@ -171,11 +198,11 @@
     <section id="contact" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
             <div>
-                <h3 class="font-bold text-slate-200 mb-1" data-en="Founder / Team" data-pt="Fundador / Equipa">Founder / Team</h3>
-                <p class="text-slate-400">Celso Almeida & MorphIQ Research Group</p>
+                <h3 class="font-bold text-slate-200 mb-1" data-en="Founder / Team" data-pt="Fundador/Equipe">Founder / Team</h3>
+                <p class="text-slate-400">Celso Almeida e Grupo de Pesquisa MorphIQ</p>
             </div>
             <div>
-                <h3 class="font-bold text-slate-200 mb-1" data-en="Contact" data-pt="Contacto">Contact</h3>
+                <h3 class="font-bold text-slate-200 mb-1" data-en="Contact" data-pt="Contato">Contact</h3>
                 <p class="text-slate-400">research@morphiq.com.br</p>
             </div>
         </div>
@@ -184,7 +211,7 @@
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-950 py-8">
         <div class="max-w-7xl mx-auto px-6 text-center text-xs text-slate-500">
-            <p>&copy; 2026 MorphIQ. Domain: morphiq.com.br. All rights reserved.</p>
+            <p>&copy; 2026 MorphIQ. Domínio: morphiq.com.br. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -268,6 +295,59 @@
             const out = document.getElementById('lab-out');
             out.innerText = `> GEOMETRY VECTOR DETECTED (${points} nodes) -> MORPHIQ-IR ENCODED -> PUF VALIDATION READY`;
         }
+
+        // Render Telemetry Benchmark Chart
+        window.addEventListener('DOMContentLoaded', () => {
+            const chartCtx = document.getElementById('benchmarkChart').getContext('2d');
+            
+            const labels = Array.from({length: 30}, (_, i) => `${i*10}ms`);
+            const pureSine = labels.map((_, i) => Math.sin(i * 0.4) * 10 + 20);
+            const camouflaged = labels.map((_, i) => Math.sin(i * 0.4) * 10 + 20 + (Math.random() * 12 - 6));
+
+            new Chart(chartCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Pure Sine Wave Signal',
+                            data: pureSine,
+                            borderColor: '#38bdf8',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Polymorphic Camouflaged Traffic',
+                            data: camouflaged,
+                            borderColor: '#818cf8',
+                            borderWidth: 1.5,
+                            tension: 0.1,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#64748b', font: { size: 10 } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#64748b', font: { size: 10 } }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#cbd5e1', font: { size: 11 } }
+                        }
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
