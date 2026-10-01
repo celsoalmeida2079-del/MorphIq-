@@ -1,188 +1,66 @@
-'use client';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MorphIQ | Experimental Computational Representation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0b0f19; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; }
+        .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import InteractiveLab from '@/components/InteractiveLab';
-
-const ARCHITECTURE_PIPELINE = [
-  'GEOMETRY',
-  'FEATURES',
-  'MORPHIQ-IR',
-  'WAVE',
-  'CAMOUFLAGE',
-  'RECOVERY',
-  'DECODER',
-  'PUF',
-  'EXECUTION',
-];
-
-export default function Home() {
-  return (
-    <main className="min-h-screen bg-[#08090a] text-slate-200">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-slate-800/80 bg-[#08090a]/80 backdrop-blur-md px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
-          <span className="font-mono text-lg font-bold tracking-wider text-white">MorphIQ</span>
+    <!-- NAVBAR -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl font-bold tracking-wider gradient-text">MorphIQ</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">morphiq.com.br</span>
+            </div>
+            <nav class="hidden md:flex gap-6 text-sm text-slate-300">
+                <a href="#about" class="hover:text-sky-400 transition">About</a>
+                <a href="#architecture" class="hover:text-sky-400 transition">Architecture</a>
+                <a href="#research" class="hover:text-sky-400 transition">Research & Experiments</a>
+                <a href="#nvidia" class="hover:text-sky-400 transition">Accelerated Compute</a>
+                <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+            </nav>
         </div>
-        <div className="hidden md:flex space-x-6 text-xs font-mono text-slate-400">
-          <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
-          <a href="#lab" className="hover:text-emerald-400 transition-colors">Lab</a>
-          <a href="#architecture" className="hover:text-emerald-400 transition-colors">Architecture</a>
-          <a href="#nvidia" className="hover:text-emerald-400 transition-colors">Accelerated Compute</a>
-          <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
-        </div>
-      </nav>
+    </header>
 
-      {/* Hero Section */}
-      <section className="pt-36 pb-20 px-6 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
-          <div className="inline-block px-3 py-1 border border-emerald-500/30 bg-emerald-500/10 rounded-full text-emerald-400 text-xs font-mono">
-            Research Hypotheses & Prototype Stage
-          </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-space text-white leading-tight">
+    <!-- HERO SECTION -->
+    <section class="max-w-5xl mx-auto px-6 py-16 text-center">
+        <div class="inline-block mb-4 px-3 py-1 rounded-full text-xs font-mono bg-sky-950/60 border border-sky-800/50 text-sky-400">
+            [Research Hypotheses & Prototype Stage]
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
             Experimental Computational Representation
-          </h1>
-          <p className="max-w-2xl text-slate-400 text-lg leading-relaxed">
+        </h1>
+        <p class="text-lg text-slate-400 max-w-3xl mx-auto mb-8">
             MorphIQ investigates boundary representations between geometric transformations, physical wave states, and execution constructs.
-          </p>
-          <div className="flex flex-wrap gap-4 pt-4">
-            <a
-              href="#lab"
-              className="px-6 py-3 bg-emerald-500 text-slate-950 font-mono text-sm font-semibold rounded hover:bg-emerald-400 transition-colors"
-            >
-              Launch Interactive Lab
-            </a>
-            <a
-              href="#deck"
-              className="px-6 py-3 border border-slate-700 hover:border-slate-500 text-sm font-mono rounded text-slate-300 transition-colors"
-            >
-              Download Presentation (PDF)
-            </a>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Architecture Visual Pipeline */}
-      <section id="architecture" className="py-12 border-y border-slate-800/60 bg-slate-950/40 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-xs font-mono uppercase text-emerald-400 mb-6 tracking-widest">
-            Pipeline Visual Architecture
-          </h2>
-          <div className="grid grid-cols-3 md:grid-cols-9 gap-2 font-mono text-[10px] text-center">
-            {ARCHITECTURE_PIPELINE.map((step, i) => (
-              <div
-                key={step}
-                className="p-3 border border-slate-800 bg-slate-900/60 rounded flex flex-col items-center justify-center space-y-1"
-              >
-                <span className="text-slate-500">{`0${i + 1}`}</span>
-                <span className="text-slate-200 font-bold">{step}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What is MorphIQ */}
-      <section id="about" className="py-20 px-6 max-w-6xl mx-auto space-y-6">
-        <h2 className="text-2xl font-bold font-space text-white">What is MorphIQ?</h2>
-        <div className="grid md:grid-cols-2 gap-8 text-slate-400 leading-relaxed text-sm">
-          <p>
-            MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent into mathematical waveforms and hardware-bound primitives.
-          </p>
-          <p>
-            Our core focus revolves around intermediate representations (MorphIQ-IR), physical unclonable functions (PUF integration), and obfuscated recovery pathways. All disclosures represent non-validated research hypotheses currently under active prototyping.
-          </p>
-        </div>
-      </section>
-
-      {/* Interactive Lab Section */}
-      <section id="lab" className="py-16 px-6 max-w-6xl mx-auto">
-        <InteractiveLab />
-      </section>
-
-      {/* Research Directions & Experiments */}
-      <section className="py-20 px-6 max-w-6xl mx-auto border-t border-slate-800/60">
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-xl font-bold font-space text-white mb-4">MorphIQ-IR & Experiments</h3>
-            <p className="text-sm text-slate-400 leading-relaxed mb-4">
-              MorphIQ-IR serves as a spatial-spectral intermediate representation. Current experiments focus on signal attenuation, boundary integrity, and reconstruction fidelity under noisy computational environments.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold font-space text-white mb-4">Research Directions</h3>
-            <ul className="list-disc list-inside text-sm text-slate-400 space-y-2">
-              <li>Geometric features to spectral transformations</li>
-              <li>Waveform obfuscation and recovery semantics</li>
-              <li>Hardware PUF bindings for execution validation</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* NVIDIA / Accelerated Compute */}
-      <section id="nvidia" className="py-16 px-6 max-w-6xl mx-auto bg-slate-950/60 border border-slate-800/80 rounded-xl">
-        <h2 className="text-xl font-bold font-space text-white mb-3">Accelerated Compute & Ecosystem Alignment</h2>
-        <p className="text-sm text-slate-400 max-w-3xl leading-relaxed">
-          Our architectural roadmap targets potential integration into the NVIDIA ecosystem through future GPU/CUDA research and accelerated compute research. The implementation leverages parallel matrix operations suitable for high-throughput hardware architectures.
         </p>
-      </section>
+    </section>
 
-      {/* Applications & Roadmap */}
-      <section className="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 className="text-xl font-bold font-space text-white mb-4">Possible Use Cases</h3>
-          <p className="text-sm text-slate-400 leading-relaxed">
-            Hypothetical applications include high-assurance hardware execution verification, low-footprint spatial data encoding, and resilient signal recovery in edge computational nodes.
-          </p>
+    <!-- PIPELINE ARCHITECTURE -->
+    <section id="architecture" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
+        <h2 class="text-2xl font-bold mb-6 gradient-text text-center">Pipeline Visual Architecture</h2>
+        <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto">
+            <div class="flex flex-wrap gap-2 text-xs font-mono justify-center items-center min-w-[600px]">
+                <span class="p-2 bg-sky-950 text-sky-300 border border-sky-800 rounded">GEOMETRY</span> &rarr;
+                <span class="p-2 bg-slate-800 rounded">FEATURES</span> &rarr;
+                <span class="p-2 bg-slate-800 rounded">MORPHIQ-IR</span> &rarr;
+                <span class="p-2 bg-slate-800 rounded">WAVE</span> &rarr;
+                <span class="p-2 bg-slate-800 rounded">CAMOUFLAGE</span> &rarr;
+                <span class="p-2 bg-slate-800 rounded">RECOVERY</span> &rarr;
+                <span class="p-2 bg-slate-800 rounded">DECODER</span> &rarr;
+                <span class="p-2 bg-slate-800 rounded">PUF</span> &rarr;
+                <span class="p-2 bg-emerald-950 text-emerald-400 border border-emerald-800 rounded">EXECUTION</span>
+            </div>
         </div>
-        <div>
-          <h3 className="text-xl font-bold font-space text-white mb-4">Research Roadmap</h3>
-          <ol className="list-decimal list-inside text-sm text-slate-400 space-y-2 font-mono">
-            <li>Phase 1: Mathematical formulation & IR spec (Current)</li>
-            <li>Phase 2: GPU-accelerated wave simulator</li>
-            <li>Phase 3: Hardware PUF decoder verification</li>
-          </ol>
-        </div>
-      </section>
+    </section>
 
-      {/* Intellectual Property & Disclaimer */}
-      <section className="py-12 border-t border-slate-800/80 bg-slate-950 px-6">
-        <div className="max-w-6xl mx-auto text-xs text-slate-500 space-y-2 font-mono">
-          <p className="text-slate-300 font-semibold">Intellectual Property Status:</p>
-          <p>Patent pending — Brasil / INPI — BR 10 2026 0229903</p>
-          <p>
-            Publicly disclosed material on this domain is intentionally non-confidential and serves purely educational and informational research purposes.
-          </p>
-        </div>
-      </section>
-
-      {/* Team, Partnerships & Contact */}
-      <footer id="contact" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/60 font-sans">
-        <div className="grid md:grid-cols-3 gap-8 text-sm">
-          <div>
-            <h4 className="text-white font-bold mb-2">Founder / Team</h4>
-            <p className="text-slate-400">Celso Almeida & MorphIQ Research Group</p>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-2">Partnerships</h4>
-            <p className="text-slate-400">Open for academic and accelerated computing research collaborations.</p>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-2">Contact</h4>
-            <p className="text-slate-400 font-mono text-xs">research@morphiq.com.br</p>
-          </div>
-        </div>
-        <div className="mt-12 text-center text-xs text-slate-600 font-mono">
-          © 2026 MorphIQ. Domain: morphiq.com.br. All rights reserved.
-        </div>
-      </footer>
-    </main>
-  );
-}
+    <!-- WHAT IS MORPHIQ -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
+        <h2 class="text-2xl font-bold mb-4 gradient-text">What is MorphIQ?</h2>
+        <p class="text-sla…
