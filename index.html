@@ -76,10 +76,12 @@
         </div>
     </section>
 
-    <!-- PIPELINE ARCHITECTURE -->
+    <!-- PIPELINE ARCHITECTURE & FLOWCHART STAGES -->
     <section id="architecture" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
-        <h2 class="text-2xl font-bold mb-6 gradient-text text-center" data-en="Pipeline Visual Architecture" data-pt="Arquitetura Visual de Pipeline">Pipeline Visual Architecture</h2>
-        <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto">
+        <h2 class="text-2xl font-bold mb-6 gradient-text text-center" data-en="Pipeline Visual Architecture" data-pt="Arquitetura Visual do Pipeline">Pipeline Visual Architecture</h2>
+        
+        <!-- LINEAR PIPELINE -->
+        <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto mb-8">
             <div class="flex flex-wrap gap-2 text-xs font-mono justify-center items-center min-w-[600px]">
                 <span class="p-2 bg-sky-950 text-sky-300 border border-sky-800 rounded">GEOMETRY</span> &rarr;
                 <span class="p-2 bg-slate-800 rounded">FEATURES</span> &rarr;
@@ -92,12 +94,55 @@
                 <span class="p-2 bg-emerald-950 text-emerald-400 border border-emerald-800 rounded">EXECUTION</span>
             </div>
         </div>
+
+        <!-- 4-STAGE DETAILED FLOWCHART CARDS (SAFE FOR PATENT) -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col justify-between">
+                <div>
+                    <span class="text-sky-400 font-mono text-xs block mb-1">01. INTERFACE</span>
+                    <h3 class="text-sm font-bold text-slate-200 mb-2" data-en="Visual Interface (IDE)" data-pt="Interface Visual (IDE)">Visual Interface (IDE)</h3>
+                    <p class="text-slate-400 leading-relaxed" data-en="Translates drawing primitives and wave geometry into mathematical frequency vectors." data-pt="Traduz primitivas de desenho e geometria de onda em vetores matemáticos de frequência.">
+                        Translates drawing primitives and wave geometry into mathematical frequency vectors.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col justify-between">
+                <div>
+                    <span class="text-indigo-400 font-mono text-xs block mb-1">02. SECURITY</span>
+                    <h3 class="text-sm font-bold text-slate-200 mb-2" data-en="Polymorphic Shield" data-pt="Escudo Polimórfico">Polymorphic Shield</h3>
+                    <p class="text-slate-400 leading-relaxed" data-en="Combines baseline signals with stochastically generated noise vectors to obfuscate transit logic." data-pt="Combina sinais de base com vetores de ruído estocásticos para ofuscar a lógica em trânsito.">
+                        Combines baseline signals with stochastically generated noise vectors to obfuscate transit logic.
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col justify-between">
+                <div>
+                    <span class="text-amber-400 font-mono text-xs block mb-1">03. TRANSPORT</span>
+                    <h3 class="text-sm font-bold text-slate-200 mb-2" data-en="Confidential Traffic" data-pt="Tráfego Confidencial">Confidential Traffic</h3>
+                    <p class="text-slate-400 leading-relaxed" data-en="Renders network and RAM payloads entirely indecipherable as static noise without hardware keys." data-pt="Torna o tráfego de rede e RAM indecifrável como ruído estático sem chaves de hardware.">
+                        Renders network and RAM payloads entirely indecipherable as static noise without hardware keys.
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col justify-between">
+                <div>
+                    <span class="text-emerald-400 font-mono text-xs block mb-1">04. HARDWARE</span>
+                    <h3 class="text-sm font-bold text-slate-200 mb-2" data-en="Silicon PUF Binding" data-pt="Validação em Silício (PUF)">Silicon PUF Binding</h3>
+                    <p class="text-slate-400 leading-relaxed" data-en="Target hardware physical unclonable functions validate physical resonance and execute primitives." data-pt="Funções físicas inestimáveis (PUF) no silício validam a ressonância física e executam.">
+                        Target hardware physical unclonable functions validate physical resonance and execute primitives.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- WHAT IS MORPHIQ & PATENT -->
     <section id="about" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60">
         <h2 class="text-2xl font-bold mb-4 gradient-text" data-en="What is MorphIQ?" data-pt="O que é o MorphIQ?">What is MorphIQ?</h2>
-        <p class="text-slate-300 leading-relaxed mb-6" data-en="MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent onto mathematical waveforms and hardware-bound primitives." data-pt="O MorphIQ é uma exploração científica em andamento sobre a representação geométrica e baseada em ondas de primitivas computacionais. Em vez de alegar substituir os paradigms convencionais de von Neumann, a nossa pesquisa explora representações paralelas que mapeiam a intenção computacional em formas de onda matemáticas e primitivas vinculadas ao hardware.">
+        <p class="text-slate-300 leading-relaxed mb-6" data-en="MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent onto mathematical waveforms and hardware-bound primitives." data-pt="O MorphIQ é uma exploração científica em andamento sobre a representação geométrica e baseada em ondas de primitivas computacionais. Em vez de alegar substituir os paradigmas convencionais de von Neumann, a nossa pesquisa explora representações paralelas que mapeiam a intenção computacional em formas de onda matemáticas e primitivas vinculadas ao hardware.">
             MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent onto mathematical waveforms and hardware-bound primitives.
         </p>
 
