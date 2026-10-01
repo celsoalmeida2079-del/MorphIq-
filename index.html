@@ -1,144 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MorphIQ | Enterprise Accelerated Artificial Intelligence</title>
-    <script src="https://tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        techgreen: '#76b900',
-                        darkbg: '#0b0f19',
-                        cardbg: '#161b26'
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-techgreen selection:text-darkbg">
+'use client';
 
-    <!-- NAVBAR -->
-    <header class="sticky top-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 rounded-lg bg-techgreen flex items-center justify-center font-bold text-darkbg text-xl">M</div>
-                <span class="text-xl font-extrabold tracking-tight text-white">Morph<span class="text-techgreen">IQ</span></span>
-            </div>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#home" class="hover:text-techgreen transition">Home</a>
-                <a href="#solutions" class="hover:text-techgreen transition">Solutions</a>
-                <a href="#architecture" class="hover:text-techgreen transition">Architecture</a>
-                <a href="#contact" class="hover:text-techgreen transition">Contact</a>
-            </nav>
-            <div>
-                <a href="#contact" class="bg-techgreen text-darkbg px-4 py-2 rounded-md text-sm font-bold hover:bg-white transition-all shadow-lg shadow-techgreen/20">Request Demo</a>
-            </div>
+import React from 'react';
+import { motion } from 'framer-motion';
+import InteractiveLab from '@/components/InteractiveLab';
+
+const ARCHITECTURE_PIPELINE = [
+  'GEOMETRY',
+  'FEATURES',
+  'MORPHIQ-IR',
+  'WAVE',
+  'CAMOUFLAGE',
+  'RECOVERY',
+  'DECODER',
+  'PUF',
+  'EXECUTION',
+];
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-[#08090a] text-slate-200">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 border-b border-slate-800/80 bg-[#08090a]/80 backdrop-blur-md px-6 py-4 flex justify-between items-center">
+        <div className="flex items-center space-x-2">
+          <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
+          <span className="font-mono text-lg font-bold tracking-wider text-white">MorphIQ</span>
         </div>
-    </header>
+        <div className="hidden md:flex space-x-6 text-xs font-mono text-slate-400">
+          <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
+          <a href="#lab" className="hover:text-emerald-400 transition-colors">Lab</a>
+          <a href="#architecture" className="hover:text-emerald-400 transition-colors">Architecture</a>
+          <a href="#nvidia" className="hover:text-emerald-400 transition-colors">Accelerated Compute</a>
+          <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
+        </div>
+      </nav>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="relative overflow-hidden pt-20 pb-32 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-techgreen/10 text-techgreen mb-6 border border-techgreen/20">
-                Next-Gen Deep Learning Platform
-            </span>
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
-                Accelerating Intelligent Automation with <span class="text-transparent bg-clip-text bg-gradient-to-r from-techgreen to-emerald-400">High-Performance AI</span>
-            </h1>
-            <p class="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
-                MorphIQ delivers robust neural network architectures designed for real-time data processing, visual inference, and automated decision-making workflows at scale.
+      {/* Hero Section */}
+      <section className="pt-36 pb-20 px-6 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6"
+        >
+          <div className="inline-block px-3 py-1 border border-emerald-500/30 bg-emerald-500/10 rounded-full text-emerald-400 text-xs font-mono">
+            Research Hypotheses & Prototype Stage
+          </div>
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-space text-white leading-tight">
+            Experimental Computational Representation
+          </h1>
+          <p className="max-w-2xl text-slate-400 text-lg leading-relaxed">
+            MorphIQ investigates boundary representations between geometric transformations, physical wave states, and execution constructs.
+          </p>
+          <div className="flex flex-wrap gap-4 pt-4">
+            <a
+              href="#lab"
+              className="px-6 py-3 bg-emerald-500 text-slate-950 font-mono text-sm font-semibold rounded hover:bg-emerald-400 transition-colors"
+            >
+              Launch Interactive Lab
+            </a>
+            <a
+              href="#deck"
+              className="px-6 py-3 border border-slate-700 hover:border-slate-500 text-sm font-mono rounded text-slate-300 transition-colors"
+            >
+              Download Presentation (PDF)
+            </a>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Architecture Visual Pipeline */}
+      <section id="architecture" className="py-12 border-y border-slate-800/60 bg-slate-950/40 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-xs font-mono uppercase text-emerald-400 mb-6 tracking-widest">
+            Pipeline Visual Architecture
+          </h2>
+          <div className="grid grid-cols-3 md:grid-cols-9 gap-2 font-mono text-[10px] text-center">
+            {ARCHITECTURE_PIPELINE.map((step, i) => (
+              <div
+                key={step}
+                className="p-3 border border-slate-800 bg-slate-900/60 rounded flex flex-col items-center justify-center space-y-1"
+              >
+                <span className="text-slate-500">{`0${i + 1}`}</span>
+                <span className="text-slate-200 font-bold">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What is MorphIQ */}
+      <section id="about" className="py-20 px-6 max-w-6xl mx-auto space-y-6">
+        <h2 className="text-2xl font-bold font-space text-white">What is MorphIQ?</h2>
+        <div className="grid md:grid-cols-2 gap-8 text-slate-400 leading-relaxed text-sm">
+          <p>
+            MorphIQ is an ongoing scientific exploration into geometric and wave-based representation of computing primitives. Rather than claiming to replace standard von Neumann or imperative paradigms, our research explores parallel representations that map computational intent into mathematical waveforms and hardware-bound primitives.
+          </p>
+          <p>
+            Our core focus revolves around intermediate representations (MorphIQ-IR), physical unclonable functions (PUF integration), and obfuscated recovery pathways. All disclosures represent non-validated research hypotheses currently under active prototyping.
+          </p>
+        </div>
+      </section>
+
+      {/* Interactive Lab Section */}
+      <section id="lab" className="py-16 px-6 max-w-6xl mx-auto">
+        <InteractiveLab />
+      </section>
+
+      {/* Research Directions & Experiments */}
+      <section className="py-20 px-6 max-w-6xl mx-auto border-t border-slate-800/60">
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 className="text-xl font-bold font-space text-white mb-4">MorphIQ-IR & Experiments</h3>
+            <p className="text-sm text-slate-400 leading-relaxed mb-4">
+              MorphIQ-IR serves as a spatial-spectral intermediate representation. Current experiments focus on signal attenuation, boundary integrity, and reconstruction fidelity under noisy computational environments.
             </p>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#solutions" class="bg-white text-darkbg px-6 py-3 rounded-md font-bold hover:bg-techgreen transition text-center">Explore Technology</a>
-                <a href="#architecture" class="border border-gray-700 hover:border-techgreen px-6 py-3 rounded-md font-bold transition text-center">Technical Specs</a>
-            </div>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold font-space text-white mb-4">Research Directions</h3>
+            <ul className="list-disc list-inside text-sm text-slate-400 space-y-2">
+              <li>Geometric features to spectral transformations</li>
+              <li>Waveform obfuscation and recovery semantics</li>
+              <li>Hardware PUF bindings for execution validation</li>
+            </ul>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- SOLUTIONS SECTION -->
-    <section id="solutions" class="py-24 border-b border-gray-800 bg-gradient-to-b from-darkbg to-cardbg/20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Core Intelligence Modules</h2>
-                <p class="mt-4 text-gray-400">Engineered to transform massive unstructured data streams into actionable operational precision.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-cardbg p-8 rounded-2xl border border-gray-800 hover:border-techgreen/30 transition">
-                    <div class="w-12 h-12 rounded-xl bg-techgreen/10 flex items-center justify-center text-techgreen text-xl mb-6">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Adaptive Learning</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Our proprietary algorithms process multidimensional datasets natively, adapting predictive models on-the-fly to changing environmental parameters.</p>
-                </div>
-                <div class="bg-cardbg p-8 rounded-2xl border border-gray-800 hover:border-techgreen/30 transition">
-                    <div class="w-12 h-12 rounded-xl bg-techgreen/10 flex items-center justify-center text-techgreen text-xl mb-6">
-                        <i class="fa-solid fa-eye"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Computer Vision Inference</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">High-throughput spatial and object recognition matrix, fine-tuned for ultra-low latency inference execution pipelines.</p>
-                </div>
-                <div class="bg-cardbg p-8 rounded-2xl border border-gray-800 hover:border-techgreen/30 transition">
-                    <div class="w-12 h-12 rounded-xl bg-techgreen/10 flex items-center justify-center text-techgreen text-xl mb-6">
-                        <i class="fa-solid fa-chart-network"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Data Optimization</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Advanced neural sorting that restructures industrial data ingestion points, drastically reducing bandwidth bottleneck overheads.</p>
-                </div>
-            </div>
+      {/* NVIDIA / Accelerated Compute */}
+      <section id="nvidia" className="py-16 px-6 max-w-6xl mx-auto bg-slate-950/60 border border-slate-800/80 rounded-xl">
+        <h2 className="text-xl font-bold font-space text-white mb-3">Accelerated Compute & Ecosystem Alignment</h2>
+        <p className="text-sm text-slate-400 max-w-3xl leading-relaxed">
+          Our architectural roadmap targets potential integration into the NVIDIA ecosystem through future GPU/CUDA research and accelerated compute research. The implementation leverages parallel matrix operations suitable for high-throughput hardware architectures.
+        </p>
+      </section>
+
+      {/* Applications & Roadmap */}
+      <section className="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 className="text-xl font-bold font-space text-white mb-4">Possible Use Cases</h3>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Hypothetical applications include high-assurance hardware execution verification, low-footprint spatial data encoding, and resilient signal recovery in edge computational nodes.
+          </p>
         </div>
-    </section>
-
-    <!-- ARCHITECTURE / TECH STACK SECTION -->
-    <section id="architecture" class="py-24 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-techgreen">Infrastructure Framework</span>
-                    <h2 class="text-3xl font-bold tracking-tight text-white mt-2 sm:text-4xl">Built for GPU Accelerated Parallel Computing</h2>
-                    <p class="mt-6 text-gray-400 leading-relaxed">
-                        MorphIQ software stack is architected from the ground up to take full advantage of mass hardware acceleration. Our roadmap prioritizes tight native integration with industry-standard acceleration toolkits to fully leverage extreme matrix calculation parallelism.
-                    </p>
-                    <ul class="mt-8 space-y-4 text-sm text-gray-300">
-                        <li class="flex items-center space-x-3">
-                            <i class="fa-solid fa-circle-check text-techgreen"></i>
-                            <span>Targeting deployment environments optimized with NVIDIA CUDA architectures.</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i class="fa-solid fa-circle-check text-techgreen"></i>
-                            <span>Intended execution layer scaling via TensorRT for model quantization and compression.</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i class="fa-solid fa-circle-check text-techgreen"></i>
-                            <span>Modular microservice containerization suitable for edge and scalable cloud inference setups.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-cardbg p-8 rounded-2xl border border-gray-800 font-mono text-xs text-gray-400 shadow-2xl">
-                    <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-4">
-                        <div class="flex space-x-2">
-                            <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-green-500"></span>
-                        </div>
-                        <span class="text-gray-500 text-xxs">morphiq_core_init.py</span>
-                    </div>
-                    <p class="text-green-400"># Initializing MorphIQ Core Accelerated Engine</p>
-                    <p class="mt-2"><span class="text-purple-400">import</span> morphiq_sdk <span class="text-purple-400">as</span> miq</p>
-                    <p><span class="text-purple-400">import</span> accelerated_computing_runtime <span class="text-purple-400">as</span> acr</p>
-                    <p class="mt-4">model = miq.models.NeuralPipeline(precision=<span class="text-amber-400">"FP16"</span>)</p>
-                    <p>engine = acr.EngineConfig(device=<span class="text-amber-400">"GPU_ACCELERATED"</span>)</p>
-                    <p class="mt-4 text-techgreen">>>> Optimizing matrix layers with TensorRT layers...</p>
-                    <p class="text-techgreen">>>> CUDA Core execution thread allocation: SUCCESS.</p>
-                    <p class="mt-4">model.deploy(engine, runtime_endpoint=<span class="text-amber-400">"localhost:8080/inference"</span>)</p>
-                    <p class="text-blue-400 mt-2">Status: ACTIVE | Ingesting multi-channel telemetry streams...</p>
-                </div>
-            </div>
+        <div>
+          <h3 className="text-xl font-bold font-space text-white mb-4">Research Roadmap</h3>
+          <ol className="list-decimal list-inside text-sm text-slate-400 space-y-2 font-mono">
+            <li>Phase 1: Mathematical formulation & IR spec (Current)</li>
+            <li>Phase 2: GPU-accelerated wave simulator</li>
+            <li>Phase 3: Hardware PUF decoder verification</li>
+          </ol>
         </div>
-    </section>
+      </section>
 
-    <!-- CONTACT SECTION -->
+      {/* Intellectual Property & Disclaimer */}
+      <section className="py-12 border-t border-slate-800/80 bg-slate-950 px-6">
+        <div className="max-w-6xl mx-auto text-xs text-slate-500 space-y-2 font-mono">
+          <p className="text-slate-300 font-semibold">Intellectual Property Status:</p>
+          <p>Patent pending — Brasil / INPI — BR 10 2026 0229903</p>
+          <p>
+            Publicly disclosed material on this domain is intentionally non-confidential and serves purely educational and informational research purposes.
+          </p>
+        </div>
+      </section>
+
+      {/* Team, Partnerships & Contact */}
+      <footer id="contact" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/60 font-sans">
+        <div className="grid md:grid-cols-3 gap-8 text-sm">
+          <div>
+            <h4 className="text-white font-bold mb-2">Founder / Team</h4>
+            <p className="text-slate-400">Celso Almeida & MorphIQ Research Group</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-2">Partnerships</h4>
+            <p className="text-slate-400">Open for academic and accelerated computing research collaborations.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-2">Contact</h4>
+            <p className="text-slate-400 font-mono text-xs">research@morphiq.com.br</p>
+          </div>
+        </div>
+        <div className="mt-12 text-center text-xs text-slate-600 font-mono">
+          © 2026 MorphIQ. Domain: morphiq.com.br. All rights reserved.
+        </div>
+      </footer>
+    </main>
+  );
+}
